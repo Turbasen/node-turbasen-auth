@@ -28,7 +28,12 @@ npm test
 
 ### Integration tests
 
-As above with `INTEGRATION_TEST` environment varaible set to `true`.
+As above with following environemtn variables set:
+
+* `NTB_API_KEY` = your Nasjonal Turbase API key
+* `INTEGRATION_TEST` = `true`
+* `INTEGRATION_TEST_EMAIL` = valid group user email
+* `INTEGRATION_TEST_PASSW` = valid group user password
 
 ## Usage
 
