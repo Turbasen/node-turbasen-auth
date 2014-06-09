@@ -25,12 +25,16 @@ cd /vagrant; pwd; ls
 
 # Read secret environment variables
 NTB_API_KEY=`cat ./env/NTB_API_KEY`
+INTEGRATION_TEST_EMAIL=`cat ./env/INTEGRATION_TEST_EMAIL`
+INTEGRATION_TEST_PASSW=`cat ./env/INTEGRATION_TEST_PASSW`
 
 # Set Environment Varaibles
 echo "Setting environment variables..."
-echo "export NODE_ENV=development"                  >> /home/vagrant/.bashrc
-echo "export NTB_API_KEY=$NTB_API_KEY"              >> /home/vagrant/.bashrc
-echo "cd /vagrant"                                  >> /home/vagrant/.bashrc
+echo "export NODE_ENV=development"                            >> /home/vagrant/.bashrc
+echo "export NTB_API_KEY=$NTB_API_KEY"                        >> /home/vagrant/.bashrc
+echo "export INTEGRATION_TEST_EMAIL=$INTEGRATION_TEST_EMAIL"  >> /home/vagrant/.bashrc
+echo "export INTEGRATION_TEST_PASSW=$INTEGRATION_TEST_PASSW"  >> /home/vagrant/.bashrc
+echo "cd /vagrant"                                            >> /home/vagrant/.bashrc
 
 # NPM package install
 echo "Installing NPM packages..."
