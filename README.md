@@ -45,7 +45,7 @@ var client = new TurbasenAuth(appName, apiKey, options);
 * `appName` name (and version) of your application
 * `apiKey` your API key to Nasjonal Turbase
 * `options`
-  * `env` environemtn, may be `api` or `dev`.
+  * `env` environment; may be `api` or `dev`.
 
 ### #uthenticate()
 ```javascript
