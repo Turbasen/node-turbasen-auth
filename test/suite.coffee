@@ -152,21 +152,24 @@ describe 'TurbasenAuth', ->
         done()
 
   describe '#_authGroup()', ->
+    group = null
+    beforeEach -> group = _id: 'abc123', navn: 'Awesome group'
+
     it 'should return error for non 404 error code', (done) ->
       auth._getGroup = (id, cb) -> cb null, statusCode: 501, {}
-      auth._authGroup 'email', 'pass', _id: 'abc123', (err, match) ->
+      auth._authGroup 'email', 'pass', group, (err, match) ->
         assert /HTTP_ERR GET \/gruppe\/abc123 - 501/.test err
         done()
 
     it 'should return false for HTTP error code is 404', (done) ->
       auth._getGroup = (id, cb) -> cb null, statusCode: 404, {}
-      auth._authGroup 'email', 'pass', _id: 'abc123', (err, match) ->
+      auth._authGroup 'email', 'pass', group, (err, match) ->
         assert.ifError err
         assert.equal match, false
         done()
 
     it 'should return false for no group user object', (done) ->
-      auth._authGroup 'email', 'pass', _id: 'abc123', (err, match) ->
+      auth._authGroup 'email', 'pass', group, (err, match) ->
         assert.ifError err
         assert.equal match, false
         done()
@@ -192,38 +195,46 @@ describe 'TurbasenAuth', ->
     #    done()
 
     it 'should return user credentials for matching email and password', (done) ->
+      name  = groups[0].privat.brukere[0].navn
       email = groups[0].privat.brukere[0].epost
       passw = groups[0].privat.brukere[0]._password
-      group = _id: groups[0]._id
+      group = _id: groups[0]._id, navn: groups[0].navn
 
       auth._authGroup email, passw, group, (err, match) ->
         assert.ifError err
         assert.deepEqual match,
-          navn: groups[0].privat.brukere[0].navn
-          epost: groups[0].privat.brukere[0].epost
+          navn: name
+          epost: email
+          gruppe: group
         done()
 
   describe '_authGroups()', ->
     it 'should authenticate user ammong one matching group', (done) ->
+      name  = groups[0].privat.brukere[0].navn
       email = groups[0].privat.brukere[0].epost
       passw = groups[0].privat.brukere[0]._password
+      group = _id: groups[0]._id, navn: groups[0].navn
 
       auth._authGroups email, passw, [groups[0]], (err, user) ->
         assert.ifError err
         assert.deepEqual user,
-          navn: groups[0].privat.brukere[0].navn
-          epost: groups[0].privat.brukere[0].epost
+          navn: name
+          epost: email
+          gruppe: group
         done()
 
     it 'should authenticate user ammong several matching groups', (done) ->
+      name  = groups[0].privat.brukere[0].navn
       email = groups[0].privat.brukere[0].epost
       passw = groups[0].privat.brukere[0]._password
+      group = _id: groups[0]._id, navn: groups[0].navn
 
       auth._authGroups email, passw, groups, (err, user) ->
         assert.ifError err
         assert.deepEqual user,
-          navn: groups[0].privat.brukere[0].navn
-          epost: groups[0].privat.brukere[0].epost
+          navn: name
+          epost: email
+          gruppe: group
         done()
 
   describe '#authenticate()', ->
@@ -237,16 +248,19 @@ describe 'TurbasenAuth', ->
         name  = 'Destinasjon Trysil'
         email = process.env.INTEGRATION_TEST_EMAIL
         passw = process.env.INTEGRATION_TEST_PASSW
+        group = _id: '52407f3c4ec4a138150001d7', navn: 'Destinasjon Trysil'
 
       else
         name  = groups[0].privat.brukere[0].navn
         email = groups[0].privat.brukere[0].epost
         passw = groups[0].privat.brukere[0]._password
+        group = _id: groups[0]._id, navn: groups[0].navn
 
       auth.authenticate email, passw, (err, user) ->
         assert.ifError err
         assert.deepEqual user,
           navn: name
           epost: email
+          gruppe: group
         done()
 

@@ -55,7 +55,9 @@ TurbasenAuth.prototype._authGroup = (email, password, group, cb) ->
       return cb new Error("HTTP_ERR GET /gruppe/#{group._id} - #{res.statusCode}")
     return cb null, false if res.statusCode is 404 or not body?.privat?.brukere
 
-    @_authUsers email, password, body.privat.brukere, cb
+    @_authUsers email, password, body.privat.brukere, (err, user) ->
+      user.gruppe = _id: group._id, navn: (group.navn or 'Gruppe uten navn') if user
+      return cb err, user
 
 TurbasenAuth.prototype._authGroups = (email, password, groups, cb) ->
   iterator = async.apply @_authGroup.bind(@), email, password
