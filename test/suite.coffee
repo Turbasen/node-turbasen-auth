@@ -227,7 +227,7 @@ describe 'TurbasenAuth', ->
         done()
 
   describe '#authenticate()', ->
-    it 'should get groups', (done) ->
+    it 'should authenticate user with valid credentials', (done) ->
       if process.env.INTEGRATION_TEST is 'true'
         @timeout 10000
 
