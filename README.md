@@ -28,7 +28,7 @@ npm test
 
 ### Integration tests
 
-As above with following environemtn variables set:
+Run the above command with the following environment variables set:
 
 * `NTB_API_KEY` = your Nasjonal Turbase API key
 * `INTEGRATION_TEST` = `true`
