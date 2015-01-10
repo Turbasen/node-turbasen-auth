@@ -2,11 +2,10 @@ crypto = require 'crypto'
 request = require 'request'
 async = require 'async'
 
-TurbasenAuth = (client, key, opts) ->
+TurbasenAuth = (client, key, opts = {}) ->
   @client = client
   @key = key
 
-  opts ?= {}
   opts.env ?= 'api'
 
   @url = "http://#{opts.env}.nasjonalturbase.no"
