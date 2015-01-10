@@ -47,7 +47,7 @@ var client = new TurbasenAuth(appName, apiKey, options);
 * `options`
   * `env` environment; may be `api` or `dev`.
 
-### #uthenticate()
+### client.authenticate()
 ```javascript
 client.authenticate(email, password, function(error, user) {
   if (error) {
