@@ -4,6 +4,8 @@
   "description": "Authenticate group users in Nasjonal Turbase",
   "main": "lib/index.js",
   "directories": {
+    "src": "src",
+    "lib": "lib",
     "test": "test"
   },
   "scripts": {
