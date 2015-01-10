@@ -1,7 +1,7 @@
 Nasjonal Turbase Auth [![Build Status](https://drone.io/github.com/Turistforeningen/node-turbasen-auth/status.png)](https://drone.io/github.com/Turistforeningen/node-turbasen-auth/latest)
 =====================
 
-[![NPM](https://nodei.co/npm/turbasen-auth.png)](https://nodei.co/npm/turbasen-auth/)
+[![NPM](https://nodei.co/npm/turbasen-auth.png?downloads=true)](https://www.npmjs.com/package/turbasen-auth)
 
 Authenticate group (grupper) users in Nasjonal Turbase with 0 effort. Just
 install, and start using it.
