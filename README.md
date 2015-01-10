@@ -20,8 +20,6 @@ npm install turbasen-auth --save
 
 ## Test
 
-### Unit tests
-
 ```
 npm test
 ```
