@@ -7,14 +7,16 @@ lib-cov
 *.pid
 *.gz
 *.swp
+*.swo
+.DS_Store
 
 pids
 logs
 results
 
 node_modules/
-.vagrant/
-env/
 lib/
+env/
 
-.DS_Store
+.vagrant/
+
