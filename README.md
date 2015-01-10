@@ -79,3 +79,5 @@ client.authenticate(email, password, function(error, user) {
 });
 ```
 
+## [MIT Licensed](https://github.com/Turistforeningen/node-turbasen-auth/blob/master/LICENSE)
+
