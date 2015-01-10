@@ -48,6 +48,22 @@ var client = new TurbasenAuth(appName, apiKey, options);
   * `env` environment; may be `api` or `dev`.
 
 ### client.authenticate()
+
+Authenticate user against Nasjonal Turbase.
+
+#### Params
+
+* `string` email - user email
+* `string` password - user password
+* `string` callback - callback function (`Error` error, `object` user)
+
+#### Return
+
+The returned user object will contains `navn` (name), `epost` (email), and
+`gruppe` (group name).
+
+#### Example
+
 ```javascript
 client.authenticate(email, password, function(error, user) {
   if (error) {
