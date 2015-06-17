@@ -1,7 +1,10 @@
-Nasjonal Turbase Auth [![Build Status](https://drone.io/github.com/Turistforeningen/node-turbasen-auth/status.png)](https://drone.io/github.com/Turistforeningen/node-turbasen-auth/latest)
-=====================
+# Nasjonal Turbase Auth
 
-[![NPM](https://nodei.co/npm/turbasen-auth.png?downloads=true)](https://www.npmjs.com/package/turbasen-auth)
+[![Build status](https://img.shields.io/wercker/ci/5581217caf7de9c51b009114.svg "Build status")](https://app.wercker.com/project/bykey/e28d2f6246e21a84b55d918440358648)
+[![NPM downloads](https://img.shields.io/npm/dm/turbasen-auth.svg "NPM downloads")](https://www.npmjs.com/package/turbasen-auth)
+[![NPM version](https://img.shields.io/npm/v/turbasen-auth.svg "NPM version")](https://www.npmjs.com/package/turbasen-auth)
+[![Node version](https://img.shields.io/node/v/turbasen-auth.svg "Node version")](https://www.npmjs.com/package/turbasen-auth)
+[![Dependency status](https://img.shields.io/david/turistforeningen/node-turbasen-auth.svg "Dependency status")](https://david-dm.org/turistforeningen/node-turbasen-auth)
 
 Authenticate group (grupper) users in Nasjonal Turbase with 0 effort. Just
 install, and start using it.
