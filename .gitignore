@@ -9,14 +9,11 @@ lib-cov
 *.swp
 *.swo
 .DS_Store
+.env
 
 pids
 logs
 results
 
-node_modules/
 lib/
-env/
-
-.vagrant/
-
+node_modules/

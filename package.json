@@ -12,8 +12,8 @@
     "build": "coffee --bare --join lib/index.js --compile src/*.coffee",
     "prepublish": "coffee --bare --join lib/index.js --compile src/*.coffee",
     "postpublish": "rm -rf lib",
-    "test": "mocha -b -c --check-leaks test/suite.coffee -R progress --compilers coffee:coffee-script/register -w",
-    "test-drone": "INTEGRATION_TEST=true node_modules/.bin/mocha test/suite.coffee -R spec --compilers coffee:coffee-script/register"
+    "test": "INTEGRATION_TEST=true node_modules/.bin/mocha test/suite.coffee -R spec --compilers coffee:coffee-script/register",
+    "watch": "INTEGRATION_TEST=true node_modules/.bin/mocha -b -c --check-leaks test/suite.coffee -R progress --compilers coffee:coffee-script/register -w"
   },
   "repository": {
     "type": "git",
