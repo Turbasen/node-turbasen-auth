@@ -100,7 +100,7 @@ The returned user object contains `navn` (name), `epost` (email), and `pbkdf2`
 {
   "navn": "Foo User Name",
   "epost": "foo@bar.com",
-  "pbkdf2:
+  "pbkdf2: {
     "prf": 'HMAC-SHA1',
     "itrs": 131072,
     "salt": "XO6rZj9WG1UsLEsAGQH16qgZpCM9D7VylFQzwpSmOEo=",
