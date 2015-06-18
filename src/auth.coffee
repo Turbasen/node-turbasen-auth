@@ -1,4 +1,4 @@
-crypto = require 'crypto'
+crypto = require './crypto'
 request = require 'request'
 async = require 'async'
 
@@ -41,7 +41,7 @@ TurbasenAuth.prototype._authUser = (email, password, user, cb) ->
     return cb hash.toString('base64') is user.pbkdf2.hash
 
 TurbasenAuth.prototype._authUsers = (email, password, users, cb) ->
-  iterator = async.apply @_authUser.bind(@), email, password
+  iterator = async.apply crypto.authenticate, email, password
   async.detect users, iterator, (user) ->
     delete user.pbkdf2 if user?.pbkdf2
 
@@ -74,4 +74,3 @@ TurbasenAuth.prototype.authenticate = (email, password, cb) ->
     @_authGroups email, password, body.documents, cb
 
 module.exports = TurbasenAuth
-
