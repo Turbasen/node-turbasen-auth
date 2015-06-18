@@ -13,10 +13,11 @@ logs
 results
 
 node_modules/
-.vagrant/
-env/
 src/
 test/
 
 .DS_Store
 .gitignore
+
+docker-compose.yml
+wercker.yml
