@@ -10,6 +10,9 @@ module.exports.pbkdf2 = (pwd, salt, itrs, dkLen, cb) ->
   catch err
     process.nextTick -> cb err
 
+module.exports.salt = (length) ->
+  crypto.randomBytes(length or 128).toString 'base64'
+
 module.exports.authenticate = (email, pass, user, cb) ->
   if email isnt user.epost
     return process.nextTick ->

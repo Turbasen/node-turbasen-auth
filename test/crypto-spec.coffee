@@ -28,6 +28,11 @@ describe 'pbkdf2()', ->
       assert.equal h, hash
       done()
 
+describe 'salt()', ->
+  it 'returns random salt', ->
+    assert.equal crypto.salt().length, 172
+    assert.notEqual crypto.salt(), crypto.salt()
+
 describe 'authenticate()', ->
   it 'returns true for correct email and password', (done) ->
     email = user.epost
