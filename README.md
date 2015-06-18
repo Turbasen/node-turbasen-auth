@@ -80,5 +80,47 @@ client.authenticate(email, password, function(error, user) {
 });
 ```
 
-## [MIT Licensed](https://github.com/Turistforeningen/node-turbasen-auth/blob/master/LICENSE)
+### client.createUserAuth()
 
+Create user authentication object for storate in Nasjonal Turbase.
+
+#### Params
+
+* `string` **name** - user name
+* `string` **email** - user email
+* `string` **password** - user password
+* `string` **callback** - callback function (`Error` **error**, `object` **user**)
+
+#### Return
+
+The returned user object contains `navn` (name), `epost` (email), and `pbkdf2`
+(user authentication).
+
+```json
+{
+  "navn": "Foo User Name",
+  "epost": "foo@bar.com",
+  "pbkdf2:
+    "prf": 'HMAC-SHA1',
+    "itrs": 131072,
+    "salt": "XO6rZj9WG1UsLEsAGQH16qgZpCM9D7VylFQzwpSmOEo=",
+    "dkLen": 256,
+    "hash": "Ir/5WTFgyBJoI3pJ8SaH8qWxdgZ0my6qcOPVPHnYJQ4="
+  }
+}
+```
+
+#### Example
+
+```javascript
+client.createUserAuth(name, email, password, function(error, user) {
+  if (error) {
+    throw error;
+  }
+
+  console.log(user);
+  }
+});
+```
+
+## [MIT Licensed](https://github.com/Turistforeningen/node-turbasen-auth/blob/master/LICENSE)
