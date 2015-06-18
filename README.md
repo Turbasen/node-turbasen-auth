@@ -51,8 +51,8 @@ Authenticate user against Nasjonal Turbase.
 
 #### Return
 
-The returned user object will contains `navn` (name), `epost` (email), and
-`gruppe` (group).
+The returned user object contains `navn` (name), `epost` (email), and `gruppe`
+(group).
 
 ```json
 {
