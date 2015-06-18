@@ -2,7 +2,7 @@
   "name": "turbasen-auth",
   "version": "1.1.2",
   "description": "Authenticate group users in Nasjonal Turbase",
-  "main": "lib/index.js",
+  "main": "lib/auth.js",
   "directories": {
     "src": "src",
     "lib": "lib",
