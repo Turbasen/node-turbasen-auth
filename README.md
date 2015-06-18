@@ -34,10 +34,10 @@ var TurbasenAuth = require('turbasen-auth');
 var client = new TurbasenAuth(appName, apiKey, options);
 ```
 
-* `appName` name (and version) of your application
-* `apiKey` your API key to Nasjonal Turbase
-* `options`
-  * `env` environment; may be `api` or `dev`.
+* `string` **name** - name (and version) of your application
+* `string` **apiKey** - your API key to Nasjonal Turbase
+* `object` **options**
+  * `string` **env** environment; (**ex.** `api` or `dev`).
 
 ### client.authenticate()
 
@@ -45,9 +45,9 @@ Authenticate user against Nasjonal Turbase.
 
 #### Params
 
-* `string` email - user email
-* `string` password - user password
-* `string` callback - callback function (`Error` error, `object` user)
+* `string` **email** - user email
+* `string` **password** - user password
+* `string` **callback** - callback function (`Error` **error**, `object` **user**)
 
 #### Return
 
@@ -101,7 +101,7 @@ The returned user object contains `navn` (name), `epost` (email), and `pbkdf2`
   "navn": "Foo User Name",
   "epost": "foo@bar.com",
   "pbkdf2": {
-    "prf": 'HMAC-SHA1',
+    "prf": "HMAC-SHA1",
     "itrs": 131072,
     "salt": "XO6rZj9WG1UsLEsAGQH16qgZpCM9D7VylFQzwpSmOEo=",
     "dkLen": 256,
