@@ -73,4 +73,20 @@ TurbasenAuth.prototype.authenticate = (email, password, cb) ->
 
     @_authGroups email, password, body.documents, cb
 
+TurbasenAuth.prototype.createUserAuth = (name, email, pass, cb) ->
+  salt = crypto.salt()
+  itrs = 131072
+  dkLen = 256
+
+  crypto.pbkdf2 pass, salt, itrs, dkLen, (err, hash) ->
+    return cb err,
+      navn: name
+      epost: email
+      pbkdf2:
+        prf: 'HMAC-SHA1'
+        itrs: itrs
+        salt: salt
+        dkLen: 256
+        hash: hash
+
 module.exports = TurbasenAuth

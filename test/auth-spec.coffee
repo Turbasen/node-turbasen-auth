@@ -223,3 +223,40 @@ describe '#authenticate()', ->
         epost: email
         gruppe: group
       done()
+
+describe '#createUserAuth()', ->
+  crypto = require '../src/crypto'
+
+  name = email = pass = null
+
+  beforeEach ->
+    name = 'Foo Bar'
+    email = 'foo@bar.org'
+    pass = 'Pa$w0rd'
+
+  it 'should create new user object', (done) ->
+    auth.createUserAuth name, email, pass, (err, user) ->
+      assert.ifError err
+      assert.equal user.navn, name
+      assert.equal user.epost, email
+
+      assert.equal typeof user.pbkdf2, 'object'
+      assert.equal typeof user.pbkdf2.salt, 'string'
+      assert.equal typeof user.pbkdf2.hash, 'string'
+      assert.equal user.pbkdf2.itrs, 131072
+      assert.equal user.pbkdf2.dkLen, 256
+
+      done()
+
+  it 'should create valid authentication object', (done) ->
+    @timeout 50000
+
+    auth.createUserAuth name, email, pass, (err, user) ->
+      assert.ifError err
+
+      crypto.authenticate email, pass, user, (isAuth, code, msg) ->
+        assert.equal isAuth, true
+        assert.equal code, undefined
+        assert.equal msg, undefined
+
+        done()
