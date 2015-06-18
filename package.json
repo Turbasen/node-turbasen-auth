@@ -9,8 +9,8 @@
     "test": "test"
   },
   "scripts": {
-    "build": "coffee --bare --join lib/index.js --compile src/*.coffee",
-    "prepublish": "coffee --bare --join lib/index.js --compile src/*.coffee",
+    "build": "node_modules/.bin/coffee --bare --output lib --compile src/*.coffee",
+    "prepublish": "node_modules/.bin/coffee --bare --output lib --compile src/*.coffee",
     "postpublish": "rm -rf lib",
     "test": "INTEGRATION_TEST=true node_modules/.bin/mocha test/suite.coffee -R spec --compilers coffee:coffee-script/register",
     "watch": "INTEGRATION_TEST=true node_modules/.bin/mocha -b -c --check-leaks test/suite.coffee -R progress --compilers coffee:coffee-script/register -w"
