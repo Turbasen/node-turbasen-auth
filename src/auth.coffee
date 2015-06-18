@@ -86,7 +86,7 @@ TurbasenAuth.prototype.createUserAuth = (name, email, pass, cb) ->
         prf: 'HMAC-SHA1'
         itrs: itrs
         salt: salt
-        dkLen: 256
+        dkLen: dkLen
         hash: hash
 
 module.exports = TurbasenAuth
