@@ -56,7 +56,23 @@ module.exports.authenticate = function(email, password, cb) {
 };
 
 module.exports.createUserAuth = function(name, email, pass, cb) {
+  var salt = crypto.salt();
+  var itrs = 131072;
+  var dkLen = 256;
 
+  crypto.pbkdf2(pass, salt, itrs, dkLen, function(err, hash) {
+    cb(err, {
+      navn: name,
+      epost: email,
+      pbkdf2: {
+        prf: 'HMAC-SHA1',
+        itrs: itrs,
+        salt: salt,
+        dkLen: dkLen,
+        hash: hash
+      }
+    });
+  });
 };
 
 module.exports.middleware = function(req, res, next) {

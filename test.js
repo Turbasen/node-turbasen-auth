@@ -183,5 +183,39 @@ describe('#middleware()', function() {
 });
 
 describe('#createUserAuth()', function() {
+  var salt = crypto.salt;
 
+  before(function() {
+    crypto.salt = function() { return 'aaaaabbbbbcccc1111122223333'; };
+  });
+
+  after(function() {
+    crypto.salt = salt;
+  });
+
+  it('returns auth for new user', function(done) {
+    this.timeout(10000);
+
+    var name = 'Random User';
+    var email = 'random.user@foo.com';
+    var password = 'Pa$sw0rd';
+
+    auth.createUserAuth(name, email, password, function(err, user) {
+      assert.ifError(err);
+
+      assert.equal(user.navn, name);
+      assert.equal(user.epost, email);
+
+      assert.equal(user.pbkdf2.prf, 'HMAC-SHA1');
+      assert.equal(user.pbkdf2.itrs, 131072);
+      assert.equal(user.pbkdf2.salt, 'aaaaabbbbbcccc1111122223333');
+      assert.equal(user.pbkdf2.dkLen, 256);
+      assert.equal(crypto.md5(user.pbkdf2.hash), '15f45542331087a598e7222335b67083');
+
+      crypto.authenticate(email, password, user, function(auth) {
+        assert.equal(auth, true);
+        done();
+      });
+    });
+  });
 });
