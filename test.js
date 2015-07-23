@@ -162,7 +162,7 @@ describe('#authenticate()', function() {
   });
 });
 
-describe.only('#middleware()', function() {
+describe('#middleware()', function() {
   this.timeout(10000);
   var agent = require('supertest').agent(require('./examples/server'));
 
