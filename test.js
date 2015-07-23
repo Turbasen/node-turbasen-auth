@@ -129,7 +129,7 @@ describe('#authenticate()', function() {
   });
 
   it('should return false for invalid user email', function(done) {
-    this.timeout(5000);
+    this.timeout(10000);
 
     auth.authenticate('foo@bar.com', _user._password, function(err, user) {
       assert.ifError(err);
@@ -139,7 +139,7 @@ describe('#authenticate()', function() {
   });
 
   it('should return false for invalid user password', function(done) {
-    this.timeout(5000);
+    this.timeout(10000);
 
     auth.authenticate(_user.epost, 'foobar', function(err, user) {
       assert.ifError(err);
@@ -149,7 +149,7 @@ describe('#authenticate()', function() {
   });
 
   it('should return user data for valid user credentials', function(done) {
-    this.timeout(5000);
+    this.timeout(10000);
 
     auth.authenticate(_user.epost, _user._password, function(err, user) {
       assert.ifError(err);
