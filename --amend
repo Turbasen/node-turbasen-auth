@@ -128,7 +128,7 @@ describe('#authenticate()', function() {
     };
   });
 
-  it('returns false for invalid user email', function(done) {
+  it('should return false for invalid user email', function(done) {
     this.timeout(10000);
 
     auth.authenticate('foo@bar.com', _user._password, function(err, user) {
@@ -138,7 +138,7 @@ describe('#authenticate()', function() {
     });
   });
 
-  it('returns false for invalid user password', function(done) {
+  it('should return false for invalid user password', function(done) {
     this.timeout(10000);
 
     auth.authenticate(_user.epost, 'foobar', function(err, user) {
@@ -148,8 +148,8 @@ describe('#authenticate()', function() {
     });
   });
 
-  it('returns user data for valid user credentials', function(done) {
-    this.timeout(5000);
+  it('should return user data for valid user credentials', function(done) {
+    this.timeout(10000);
 
     auth.authenticate(_user.epost, _user._password, function(err, user) {
       assert.ifError(err);
@@ -166,13 +166,13 @@ describe('#middleware()', function() {
   this.timeout(10000);
   var agent = require('supertest').agent(require('./examples/server'));
 
-  it('returns 401 for invalid user credentials', function(done) {
+  it('should return 401 for invalid user credentials', function(done) {
     agent.post('/authenticate')
       .send({email: 'foo', password: 'bar'})
       .expect(401, done);
   });
 
-  it('returns 200 for valid user credentials', function(done) {
+  it('should return 200 for valid user credentials', function(done) {
     var email = process.env.INTEGRATION_TEST_EMAIL;
     var passw = process.env.INTEGRATION_TEST_PASSW;
 
