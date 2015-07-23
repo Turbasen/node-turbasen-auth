@@ -2,6 +2,11 @@ box: node:0.10
 build:
   steps:
     - npm-install
+
+    - script:
+        name: jshint
+        code: npm run hint
+
     - npm-test
 
     - script:
