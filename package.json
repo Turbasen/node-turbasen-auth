@@ -38,6 +38,7 @@
     "turbasen": "~1"
   },
   "devDependencies": {
+    "body-parser": "~1",
     "express": "~4",
     "jshint": "~2",
     "mocha": "~2",
