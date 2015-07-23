@@ -3,7 +3,7 @@
 
 var assert = require('assert');
 var crypto = require('./lib/crypto');
-var auth = require('.');
+var auth = require('./index');
 
 process.env.NTB_USER_AGENT = 'turbasen-auth/v' + require('./package.json').version;
 
