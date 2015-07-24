@@ -9,8 +9,7 @@
 Authenticate group (grupper) users in Nasjonal Turbase with 0 effort. Just
 install, and start using it.
 
-
-## Requiremetns
+## Requirements
 
 1. Node.JS >= 0.10
 2. Nasjonal Turbase API key
@@ -29,17 +28,25 @@ npm test
 
 ## Usage
 
-```javascript
-var TurbasenAuth = require('turbasen-auth');
-var client = new TurbasenAuth(appName, apiKey, options);
+```js
+var auth = require('turbasen-auth');
 ```
 
-* `string` **name** - name (and version) of your application
-* `string` **apiKey** - your API key to Nasjonal Turbase
-* `object` **options**
-  * `string` **env** environment; (**ex.** `api` or `dev`).
+### Configure
 
-### client.authenticate()
+This package uses the official Node.JS library for Nasjonal Turbase
+([turbasen.js](https://github.com/Turbasen/turbasen.js)) which can be fully
+configured using the environment variables:
+
+* `NTB_API_KEY` - API key for authenticate requests
+* `NTB_API_ENV` - API environment (default api, can be dev)
+* `NTB_USER_AGENT` - User Agent for API requests
+
+You can also set or update the configuration programmatically using the
+[`auth.turbasen.configure()`](https://github.com/Turbasen/turbasen.js#configure)
+method.
+
+### auth.authenticate()
 
 Authenticate user against Nasjonal Turbase.
 
@@ -67,8 +74,8 @@ The returned user object contains `navn` (name), `epost` (email), and `gruppe`
 
 #### Example
 
-```javascript
-client.authenticate(email, password, function(error, user) {
+```js
+auth.authenticate(email, password, function(error, user) {
   if (error) {
     // Something went horrible wrong
     console.error(error);
@@ -80,9 +87,35 @@ client.authenticate(email, password, function(error, user) {
 });
 ```
 
-### client.createUserAuth()
+### auth.middleware()
 
-Create user authentication object for storate in Nasjonal Turbase.
+A Connect / Express compatible middleware to make authentication super easy.
+
+#### Body Params
+
+The following params must be sent as JSON in the request body.
+
+* `string` **email** - user email
+* `string` **password** - user password
+
+### Return
+
+If the authentication succeeds the user information (identical to
+`authenticate()`) will be available in the `req.turbasenAuth` variable.
+
+### Example
+
+See [server.js](examples/server.js) for a complete Express example.
+
+```js
+app.post('/auth', auth.middleware, function(req, res){
+  // req.turbasenAuth
+});
+```
+
+### auth.createUserAuth()
+
+Create user authentication object for storage in Nasjonal Turbase.
 
 #### Params
 
@@ -112,8 +145,8 @@ The returned user object contains `navn` (name), `epost` (email), and `pbkdf2`
 
 #### Example
 
-```javascript
-client.createUserAuth(name, email, password, function(error, user) {
+```js
+auth.createUserAuth(name, email, password, function(error, user) {
   if (error) {
     throw error;
   }
