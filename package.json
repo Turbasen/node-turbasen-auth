@@ -1,6 +1,6 @@
 {
   "name": "turbasen-auth",
-  "version": "1.2.3",
+  "version": "2.0.0-rc.1",
   "description": "Authenticate group users in Nasjonal Turbase",
   "main": "index.js",
   "directories": {
