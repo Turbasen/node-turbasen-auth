@@ -1,6 +1,6 @@
 # Nasjonal Turbase Auth
 
-[![Build status](https://img.shields.io/wercker/ci/5581217caf7de9c51b009114.svg "Build status")](https://app.wercker.com/project/bykey/e28d2f6246e21a84b55d918440358648)
+[![Build status](https://img.shields.io/wercker/ci/55b1eaf74edd0c2278030492.svg "Build status")](https://app.wercker.com/project/bykey/5240bd0a4c5f609c832494e9dd18aefb)
 [![NPM downloads](https://img.shields.io/npm/dm/turbasen-auth.svg "NPM downloads")](https://www.npmjs.com/package/turbasen-auth)
 [![NPM version](https://img.shields.io/npm/v/turbasen-auth.svg "NPM version")](https://www.npmjs.com/package/turbasen-auth)
 [![Node version](https://img.shields.io/node/v/turbasen-auth.svg "Node version")](https://www.npmjs.com/package/turbasen-auth)
