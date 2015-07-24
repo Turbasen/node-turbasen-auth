@@ -2,18 +2,14 @@
   "name": "turbasen-auth",
   "version": "1.2.3",
   "description": "Authenticate group users in Nasjonal Turbase",
-  "main": "lib/auth.js",
+  "main": "index.js",
   "directories": {
-    "src": "src",
-    "lib": "lib",
-    "test": "test"
+    "lib": "lib"
   },
   "scripts": {
-    "build": "node_modules/.bin/coffee --bare --output lib --compile src/*.coffee",
-    "prepublish": "node_modules/.bin/coffee --bare --output lib --compile src/*.coffee",
-    "postpublish": "rm -rf lib",
-    "test": "INTEGRATION_TEST=true node_modules/.bin/mocha test/suite.coffee -R spec --compilers coffee:coffee-script/register",
-    "watch": "INTEGRATION_TEST=true node_modules/.bin/mocha -b -c --check-leaks test/suite.coffee -R progress --compilers coffee:coffee-script/register -w"
+    "hint": "node_modules/.bin/jshint index.js test.js lib/ examples/",
+    "test": "INTEGRATION_TEST=true node_modules/.bin/mocha test.js -R spec",
+    "watch": "INTEGRATION_TEST=true node_modules/.bin/mocha -b -c --check-leaks test.js -R progress -w"
   },
   "repository": {
     "type": "git",
@@ -23,12 +19,11 @@
     "SSO",
     "auth",
     "authentication",
-    "nasjonal",
-    "turbase",
+    "dnt",
+    "nasjonal turbase",
     "turbasen",
     "turistforening",
-    "turistforeningen",
-    "dnt"
+    "turistforeningen"
   ],
   "author": "Hans Kristian Flaatten <hans.kristian.flaatten@turistforeningen.no>",
   "license": "MIT",
@@ -37,14 +32,20 @@
   },
   "homepage": "https://github.com/Turistforeningen/node-turbasen-auth",
   "dependencies": {
-    "async": "~1.2",
-    "request": "~2.58"
+    "async": "~1.4"
+  },
+  "peerDependencies": {
+    "turbasen": "~1"
   },
   "devDependencies": {
-    "coffee-script": "~1",
-    "mocha": "~2"
+    "body-parser": "~1",
+    "express": "~4",
+    "jshint": "~2",
+    "mocha": "~2",
+    "supertest": "~1"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": ">=0.10",
+    "iojs": ">=1"
   }
 }

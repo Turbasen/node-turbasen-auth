@@ -1,5 +1,5 @@
 dev:
-  image: iojs:2
+  image: iojs
   working_dir: /usr/src/app
   volumes:
     - ".:/usr/src/app"
@@ -7,3 +7,4 @@ dev:
   env_file: .env
   environment:
     - NODE_ENV=development
+    - NTB_API_ENV=dev
