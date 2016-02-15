@@ -149,7 +149,7 @@ describe('#authenticate()', function() {
   });
 
   it('returns user data for valid user credentials', function(done) {
-    this.timeout(5000);
+    this.timeout(10000);
 
     auth.authenticate(_user.epost, _user._password, function(err, user) {
       assert.ifError(err);
