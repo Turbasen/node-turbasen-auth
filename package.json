@@ -1,15 +1,13 @@
 {
   "name": "turbasen-auth",
-  "version": "2.0.0-rc.1",
+  "version": null,
   "description": "Authenticate group users in Nasjonal Turbase",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
-    "hint": "node_modules/.bin/jshint index.js test.js lib/ examples/",
-    "test": "INTEGRATION_TEST=true node_modules/.bin/mocha test.js -R spec",
-    "watch": "INTEGRATION_TEST=true node_modules/.bin/mocha -b -c --check-leaks test.js -R progress -w"
+    "lint": "eslint index.js test/",
+    "test": "mocha -c --check-leaks -R tap test.js",
+    "watch": "mocha -w -b -c --check-leaks -R progress test.js",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -25,27 +23,27 @@
     "turistforening",
     "turistforeningen"
   ],
-  "author": "Hans Kristian Flaatten <hans.kristian.flaatten@turistforeningen.no>",
+  "author": "Hans Kristian Flaatten <hans.kristian.flaatten@dnt.no>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Turistforeningen/node-turbasen-auth/issues"
   },
-  "homepage": "https://github.com/Turistforeningen/node-turbasen-auth",
-  "dependencies": {
-    "async": "~1.4"
-  },
-  "peerDependencies": {
-    "turbasen": "~1"
-  },
-  "devDependencies": {
-    "body-parser": "~1",
-    "express": "~4",
-    "jshint": "~2",
-    "mocha": "~2",
-    "supertest": "~1"
-  },
+  "homepage": "https://github.com/Turistforeningen/node-turbasen-auth#readme",
   "engines": {
     "node": ">=0.10",
     "iojs": ">=1"
+  },
+  "dependencies": {
+    "async": "^1.5.2"
+  },
+  "peerDependencies": {
+    "turbasen": "^1.6.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jshint": "^2.9.1",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
   }
 }
