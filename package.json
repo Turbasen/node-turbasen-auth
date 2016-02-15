@@ -4,7 +4,7 @@
   "description": "Authenticate group users in Nasjonal Turbase",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js test/",
+    "lint": "jshint index.js lib/ examples/ test.js",
     "test": "mocha -c --check-leaks -R tap test.js",
     "watch": "mocha -w -b -c --check-leaks -R progress test.js",
     "semantic-release": "semantic-release"
